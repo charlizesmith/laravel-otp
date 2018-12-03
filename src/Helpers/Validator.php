@@ -21,18 +21,18 @@ class Validator
      */
     public function isValid($otp, $module, $id)
     {
-        (new OTP)->removeExpiredTokens();
+        //(new OTP)->removeExpiredTokens();
 
-        if ($this->isBlocked($module, $id)) {
-            return false;
-        }
+//        if ($this->isBlocked($module, $id)) {
+//            return false;
+//        }
 
         $otp = OTP::where('token', $otp)
             ->where('module', $module)
             ->where('entity_id', $id)
             ->first();
 
-        if (!$otp) {
+        if(!$otp) {
             return false;
         }
 
