@@ -13,14 +13,14 @@ class OneTimePassword extends Model
 
     public function removeExpiredTokens()
     {
-        OneTimePassword::where('expires_on', '<=', Carbon::now())->delete();
+       // OneTimePassword::where('expires_on', '<=', Carbon::now())->delete();
 
-        return true;
+        //return true;
     }
 
     public function generate($module, $id, $length)
     {
-        $this->removeExpiredTokens();
+       // $this->removeExpiredTokens();
 
         $min = str_pad(1, $length, 0);
         $max = str_pad(9, $length, 9);
@@ -28,7 +28,7 @@ class OneTimePassword extends Model
         $this->token = random_int($min, $max);
         $this->module = $module;
         $this->entity_id = $id;
-        $this->expires_on = Carbon::now()->addMinutes(Config::get('otp.expiry'));
+       // $this->expires_on = Carbon::now()->addMinutes(Config::get('otp.expiry'));
         $this->save();
 
         return $this;
