@@ -42,15 +42,15 @@ class Manager
      */
     public function generate($module, $id)
     {
-        if ($this->otpValidator->isBlocked($module, $id)) {
-            throw new ServiceBlockedException("Service blocked due to too many requests", 403);
-        }
+//        if ($this->otpValidator->isBlocked($module, $id)) {
+//            throw new ServiceBlockedException("Service blocked due to too many requests", 403);
+//        }
 
-        if (Config::get('otp.allowed_otps') <= $this->otpValidator->getTrials($module, $id)) {
-            $this->_block($module, $id);
-
-            throw new MaxAllowedOtpsExhaustedException("Max allowed OTPs are:" . Config::get('otp.allowed_otps') . ". Exahusted.", 403);
-        }
+//        if (Config::get('otp.allowed_otps') <= $this->otpValidator->getTrials($module, $id)) {
+//            $this->_block($module, $id);
+//
+//            throw new MaxAllowedOtpsExhaustedException("Max allowed OTPs are:" . Config::get('otp.allowed_otps') . ". Exahusted.", 403);
+//        }
 
         $otp = $this->otpGenerator->generate($module, $id);
 
