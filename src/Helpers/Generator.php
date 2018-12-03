@@ -32,7 +32,7 @@ class Generator
      */
     public function generate($module, $id)
     {
-        $this->otpModel->removeExpiredTokens();
+        //$this->otpModel->removeExpiredTokens();
 
         $otp = $this->otpModel
             ->whereModule($module)
